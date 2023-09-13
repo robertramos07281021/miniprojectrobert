@@ -1,0 +1,53 @@
+<% layout('/layouts/boilerplate') %> 
+
+<div class="row mt-3">
+    <h1 class="text-center">New Listing Form</h1>
+    <div class="col-6 offset-3">
+        <form action="/listings" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+                <label for="name" class="form-label"> Listing Name:</label>
+                <input type="text" name="listing[name]" id="name" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label"> Listing Location:</label>
+                <input type="text" name="listing[location]" id="location" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label"> Listing Image URL:</label>
+                <input type="text" name="listing[image]" id="image" class="form-control" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label"> Listing Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">P</span>
+                    <input type="price" name="listing[price]" id="price" class="form-control" placeholder="0.00" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label"> Listing Description:</label>
+                <textarea name="listing[description]" id="description" class="form-control" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mt-2 text-center">
+                <button class="btn btn-success">Add Listing</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+

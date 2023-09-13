@@ -1,0 +1,69 @@
+<% layout('/layouts/boilerplate') %>
+<div class="row my-3 d-flex justify-content-center">
+    <div class="col-12 d-flex flex-row gap-3 justify-content-center">
+        <div class="col-6 mb-3">
+            <div class="card">
+                <img src="<%= listing.image %>" alt="listing_image" class="card-img-top" height="400px" width="400px">
+                <div class="card-body">
+                    <h1 class="card-title h5"><%= listing.name %></h1>
+                    <p class="card-text"><%= listing.description %></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-muted"><%= listing.location %></li>
+                    <li class="list-group-item">Posted By: <%= listing.author.username %></li>
+                    <li class="list-group-item">P <%= listing.price %> / night</li>
+                </ul>
+                <% if(currentUser && listing.author.equals(currentUser._id)) {%>
+                <div class="card-body d-flex gap-2 mx-2">
+                    <div>
+                    <a href="/listings/<%= listing.id %>/update-listing" class="card-link btn btn btn-primary">Edit</a>
+                </div>
+                    <form action="/listings/<%= listing.id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+                <% } %>
+                <div class="card-footer text-muted">2 days ago</div>
+            </div>
+        </div>
+
+        <!-- reviews Form -->
+        
+        <div class="col-6">
+            <% if(currentUser) { %>
+            <form action="/listings/<%= listing.id %>/reviews" method="POST" class="mb-3 validated-form " novalidate>
+                <h2>Review</h2>
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rating</label>
+                    <input type="range" name="review[rating]" id="rating" class="form-range" value="1" min="1" max="5" required>
+                </div>
+                <div class="mb-3">
+                    <label for="body" class="form-label">Review</label>
+                    <textarea name="review[body]" id="body" class="form-control" cols="30" rows="3" required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <button class="btn btn-success">Submite Review</button>
+            </form>
+            <% } %>
+            <div class="overflow-auto">
+                <% for(let review of listing.reviews) { %>
+                    <div class="card mb-3 ">
+                        <div class="card-body">
+                            <h5 class="card-title">Rating: <%= review.rating %></h5>
+                            <h6 class="card-title text-muted">By: <%= review.author.username %></h6>
+                            <p class="card-text">Review: <%= review.body %></p>
+                            <% if(currentUser && review.author.equals(currentUser._id)) {%>
+                            <form action="/listings/<%= listing.id %>/reviews/<%=review.id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+    
