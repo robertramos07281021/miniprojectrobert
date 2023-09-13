@@ -10,6 +10,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
+const port = process.env.PORT || 5000
+
 //routers
 const listingsRouter = require('./server/routers/listingRouters');
 const userRouter = require('./server/routers/userRouter');
@@ -83,6 +85,6 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(8000, ()=> {
-    console.log("Server up to 8000");
+app.listen(port, ()=> {
+    console.log(`Server up to ${port}`);
 })
