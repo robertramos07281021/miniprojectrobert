@@ -4,7 +4,7 @@ const User = require('../../models/user');
 const catchAsync = require('../../utils/catchAsync')
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/listing')
+mongoose.connect('mongodb://localhost:27017/listing')
     .then(() => {
         console.log("Connection Open")
     })
