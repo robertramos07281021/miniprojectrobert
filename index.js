@@ -85,6 +85,6 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(port, ()=> {
-    console.log(`Server up to ${port}`);
+app.listen(10000, ()=> {
+    console.log(`Server up to 10000`);
 })
