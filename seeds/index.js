@@ -3,7 +3,7 @@ const Listing = require('../models/listing');
 const cities = require('../seeds/cities');
 const {descriptors, places} = require('../seeds/seedHelpers');
 
-mongoose.connect("mongodb://localhost:27017/listing")
+mongoose.connect("mongodb://127.0.0.1:27017/listing")
     .then(() => {
         console.log("Connection open");
     })
