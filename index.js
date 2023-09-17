@@ -32,6 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const sessionConfig = {
     secret: 'thisissecret',
+    resave: false,
+    saveUninitialized: true,
     cookie:{
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7 ,
         maxAge: 1000 * 60 * 60 * 24 * 7
