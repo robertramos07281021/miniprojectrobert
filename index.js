@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -11,7 +12,7 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const mongoose = require('mongoose')
 
-require('dotenv').config()
+
 
 //routers
 const listingsRouter = require('./server/routers/listingRouters');
