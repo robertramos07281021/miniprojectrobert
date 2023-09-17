@@ -4,7 +4,6 @@ const cities = require('../seeds/cities');
 const {descriptors, places} = require('../seeds/seedHelpers');
 require('dotenv').config()
 
-
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("Success fully added");
@@ -21,7 +20,7 @@ const seedDb  = async() => {
         const randomCityNum = Math.floor(Math.random() * 1006 + 1);
 
         const listing = new Listing({
-            author: '64fd4b944c9377b51695d67a',
+            author: '6506d5a68f50fa509b4ad16b',
             location: `${cities[randomCityNum].city}, ${cities[randomCityNum].admin_name}`,
             image: "https://source.unsplash.com/collection/483251",
             name: `${randomNameNum(descriptors)}, ${randomNameNum(places)}`,

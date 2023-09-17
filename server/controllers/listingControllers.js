@@ -16,7 +16,6 @@ exports.allListings = catchAsync(async (req, res) => {
 exports.viewListing = catchAsync(async (req, res) => {
     const listingId = req.params.id;
     const listing = await Listing.findById(listingId).populate({path: 'reviews', populate: {path: 'author'}}).populate('author');
-    console.log(listing)
     if(!listing){
         req.flash('error','Listing does not exist!! ERROR 404')
         return res.redirect('/listings');
