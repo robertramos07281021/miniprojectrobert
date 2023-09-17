@@ -1,16 +1,7 @@
 
-const mongoose = require('mongoose');
 const User = require('../../models/user');
 const catchAsync = require('../../utils/catchAsync')
 
-
-mongoose.connect('mongodb://127.0.0.1:27017/listing')
-    .then(() => {
-        console.log("Connection Open")
-    })
-    .catch(err => {
-        console.log('Error: ', err)
-    })
 
 //render registration form
 exports.registrationForm = (req,res) => {

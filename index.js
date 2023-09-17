@@ -9,8 +9,9 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+const mongoose = require('mongoose')
 
-const port = process.env.PORT || 10000
+require('dotenv').config()
 
 //routers
 const listingsRouter = require('./server/routers/listingRouters');
@@ -84,7 +85,13 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error',{err});
 })
 
+mongoose.connect(process.env.MONGO_URI)
+    .then(()=> {
+        app.listen(process.env.PORT, () => {
+            console.log('connected to DB and listening on port', process.env.PORT);
+        })
+    })
+    .catch(err => {
+        console.log(err)
+    })
 
-app.listen(10000, ()=> {
-    console.log(`Server up to 10000`);
-})
