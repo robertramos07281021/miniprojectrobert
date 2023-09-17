@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
@@ -12,7 +12,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
-
+require('dotenv').config();
 
 
 //routers
