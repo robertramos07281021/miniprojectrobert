@@ -1,9 +1,15 @@
-
+const mongoose = require('mongoose');
 const Listing = require('../../models/listing');
 const catchAsync = require('../../utils/catchAsync')
 const Review = require('../../models/review')
 
-
+mongoose.connect('mongodb://127.0.0.1:27017/listings')
+    .then(() => {
+        console.log("Connected to DB")
+    })
+    .catch(err => {
+        console.log("Error: " + err);
+    })
 
 
 //render and for index.ejs
